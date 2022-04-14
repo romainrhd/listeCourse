@@ -1,14 +1,17 @@
+// Deps
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {createRoot} from "react-dom/client";
+import LayoutDefault from './layouts/Default';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+// Style
+import './assets/index.css';
+
+createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <LayoutDefault />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
