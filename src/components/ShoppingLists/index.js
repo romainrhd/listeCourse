@@ -1,29 +1,16 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 function ShoppingLists() {
-    const [shoppingLists, setShoppingLists] = useState([
-        {
-            id: 1,
-            name: "Ma liste de course"
-        },
-        {
-            id: 2,
-            name: "Anniversaire Hugo"
-        },
-        {
-            id: 3,
-            name: "Anniversaire Lucie"
-        },
-        {
-            id: 4,
-            name: "Fête de Pacques"
-        },
-        {
-            id: 5,
-            name: "Noël"
-        }
-    ]);
+    const [shoppingLists, setShoppingLists] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/api/shopping-lists/")
+            .then(res => res.json())
+            .then((result) => {
+
+            });
+    });
 
     return (
         <div className="flex flex-wrap flex-row justify-center gap-2">
