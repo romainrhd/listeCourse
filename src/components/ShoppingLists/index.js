@@ -8,9 +8,9 @@ function ShoppingLists() {
         fetch("http://localhost:8000/api/shopping-lists/")
             .then(res => res.json())
             .then((result) => {
-
+                setShoppingLists(result);
             });
-    });
+    }, []);
 
     return (
         <div className="flex flex-wrap flex-row justify-center gap-2">

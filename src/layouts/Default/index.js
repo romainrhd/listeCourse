@@ -5,7 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import Home from "../../pages/Home";
 import Profile from "../../pages/Profile";
 import Navbar from "../../components/Navbar";
-import ShoppingList from "../../pages/ShoppingList";
+import List from "../../pages/List";
 
 function LayoutDefault() {
     return (
@@ -15,7 +15,7 @@ function LayoutDefault() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/profil" element={<Profile />} />
-                        <Route path="/shopping-list/:shoppingListId" element={<ShoppingList />} />
+                        <Route path="/shopping-list/:shoppingListId" element={<List />} />
                     </Routes>
                 </div>
             </div>
