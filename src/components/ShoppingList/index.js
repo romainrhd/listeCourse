@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import ItemShoppingList from "../ItemShoppingList";
 
 function ShoppingList() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -21,12 +22,12 @@ function ShoppingList() {
 
     return (
         <div>
-            <h1>{shoppingList.name}</h1>
-            <ul>
+            <h1 className="text-center text-2xl">{shoppingList.name}</h1>
+            <div className="flex flex-col mt-4">
                 {shoppingList.items.map((item) => {
-                    return <li key={item.id}>{item.content}</li>;
+                    return <ItemShoppingList key={item.id} item={item} />;
                 })}
-            </ul>
+            </div>
         </div>
     );
 }
