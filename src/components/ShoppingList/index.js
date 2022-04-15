@@ -23,7 +23,7 @@ function ShoppingList() {
     return (
         <div>
             <h1 className="text-center text-2xl">{shoppingList.name}</h1>
-            <div className="flex flex-col mt-4">
+            <div className="flex flex-col mt-4 divide-y divide-blue-200">
                 {shoppingList.items.map((item) => {
                     return <ItemShoppingList key={item.id} item={item} />;
                 })}

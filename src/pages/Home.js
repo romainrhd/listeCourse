@@ -2,7 +2,9 @@ import ShoppingLists from "../components/ShoppingLists";
 
 function Home() {
     return (
-        <ShoppingLists />
+        <div className="p-4">
+            <ShoppingLists />
+        </div>
     );
 }
 
