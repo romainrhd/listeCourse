@@ -13,10 +13,10 @@ function ShoppingLists() {
     }, []);
 
     return (
-        <div className="flex flex-wrap flex-row justify-center gap-2">
+        <div className="flex flex-wrap flex-row justify-center divide-y">
             {shoppingLists.map(shoppingList => {
                 return (
-                    <Link className="w-full text-center p-2 rounded-md bg-white" key={shoppingList.id} to={"/shopping-list/" + shoppingList.id}>{shoppingList.name}</Link>
+                    <Link className="w-full text-center p-2 bg-white" key={shoppingList.id} to={"/shopping-list/" + shoppingList.id}>{shoppingList.name}</Link>
                 )
             })}
         </div>
