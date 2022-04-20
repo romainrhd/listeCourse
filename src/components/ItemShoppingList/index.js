@@ -1,9 +1,19 @@
+import {useState} from "react";
+
 function ItemShoppingList(props) {
-    const {item} = props;
+    const [item, setItem] = useState(props.item);
 
-
-    const handleChecked = () => {
-        console.log("c'est fait !");
+    const handleChecked = (event) => {
+        fetch(`http://localhost:8000/api/items/${item.id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                done: event.target.checked
+            })
+        })
+            .then(res => res.json())
+            .then((result) => {
+                setItem(result);
+            });
     };
 
     return (
