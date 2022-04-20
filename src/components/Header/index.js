@@ -15,7 +15,7 @@ function Header() {
             </button>
             Mes listes de courses
             <Link to="/">
-                <FontAwesomeIcon icon="home"/>
+                <FontAwesomeIcon icon="check"/>
             </Link>
         </div>
     );

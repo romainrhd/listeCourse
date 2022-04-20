@@ -21,11 +21,14 @@ function ShoppingList() {
     }
 
     return (
-        <div>
+        <div className="flex flex-col justify-between h-full">
             <div className="flex flex-col divide-y bg-white">
                 {shoppingList.items.map((item) => {
                     return <ItemShoppingList key={item.id} item={item} />;
                 })}
+            </div>
+            <div>
+                <input type="text" className="w-full" />
             </div>
         </div>
     );
