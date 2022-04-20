@@ -5,11 +5,13 @@ import {Route, Routes} from "react-router-dom";
 import Home from "../../pages/Home";
 import Profile from "../../pages/Profile";
 import Navbar from "../../components/Navbar";
+import Header from "../../components/Header";
 import List from "../../pages/List";
 
 function LayoutDefault() {
     return (
         <div className="flex flex-col min-h-screen">
+            <Header />
             <div className="grow bg-gray-100">
                 <Routes>
                     <Route path="/" element={<Home />} />
