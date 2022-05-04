@@ -1,5 +1,7 @@
 // Deps
 import React from 'react';
+import store from "./store";
+import {Provider} from "react-redux";
 import {createRoot} from "react-dom/client";
 import LayoutDefault from './layouts/Default';
 import reportWebVitals from './reportWebVitals';
@@ -16,9 +18,11 @@ import './assets/index.css';
 library.add(fab, faArrowLeft, faCheck, faPlus);
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <LayoutDefault />
-  </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <LayoutDefault />
+      </BrowserRouter>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
