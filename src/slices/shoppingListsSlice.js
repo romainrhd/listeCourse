@@ -19,4 +19,6 @@ export const shoppingListsSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { getShoppingLists } = shoppingListsSlice.actions;
 
+export const selectShoppingLists = (state) => state.shoppingLists;
+
 export default shoppingListsSlice.reducer;
