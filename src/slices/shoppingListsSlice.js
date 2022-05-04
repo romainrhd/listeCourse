@@ -13,11 +13,14 @@ export const shoppingListsSlice = createSlice({
             // immutable state based off those changes
             state.shoppingLists = action.payload;
         },
+        addShoppingList: (state, action) => {
+            // TODO : mettre à jour les données de la bonne shopping list si elle existe déjà
+            state.shoppingLists.push(action.payload);
+        }
     },
 });
 
-// Action creators are generated for each case reducer function
-export const { getShoppingLists } = shoppingListsSlice.actions;
+export const { getShoppingLists, addShoppingList } = shoppingListsSlice.actions;
 
 export const selectShoppingLists = (state) => state.shoppingLists;
 
