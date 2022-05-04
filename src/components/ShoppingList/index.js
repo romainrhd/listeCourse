@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemShoppingList from "../ItemShoppingList";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function ShoppingList() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -27,9 +28,12 @@ function ShoppingList() {
                     return <ItemShoppingList key={item.id} item={item} />;
                 })}
             </div>
-            <div>
-                <input type="text" className="w-full" />
-            </div>
+            <form className="flex">
+                <input type="text" name="itemContent" className="w-full border-gray-200" placeholder="Ajouter un article"/>
+                <button type="submit" className="border px-4 bg-white">
+                    <FontAwesomeIcon icon="plus"/>
+                </button>
+            </form>
         </div>
     );
 }
