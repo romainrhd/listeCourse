@@ -13,9 +13,11 @@ function ShoppingLists() {
             .then(res => res.json())
             .then((result) => {
                 dispatch(getShoppingLists(result));
+            })
+            .then(() => {
                 setIsLoaded(true);
             });
-    }, []);
+    }, [dispatch]);
 
     if (!isLoaded) {
         return <p>Chargement ...</p>
@@ -23,7 +25,7 @@ function ShoppingLists() {
 
     return (
         <div className="flex flex-wrap flex-row justify-center divide-y">
-            {shoppingLists.map(shoppingList => {
+            {shoppingLists.list.map(shoppingList => {
                 return (
                     <Link className="w-full text-center p-2 bg-white" key={shoppingList.id} to={"/shopping-list/" + shoppingList.id}>{shoppingList.name}</Link>
                 )
