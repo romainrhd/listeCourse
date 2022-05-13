@@ -11,11 +11,20 @@ export const shoppingListsSlice = createSlice({
             // doesn't actually mutate the state because it uses the Immer library,
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
+            // TODO : ne pas écraser la liste qui existe déjà
             state.list = action.payload;
         },
         addShoppingList: (state, action) => {
-            // TODO : mettre à jour les données de la bonne shopping list si elle existe déjà
-            state.list.push(action.payload);
+            state.list = state.list.map((shoppingList) => {
+                if (shoppingList.id !== action.payload.id) {
+                    return shoppingList;
+                }
+
+                return {
+                    ...shoppingList,
+                    ...action.payload
+                };
+            });
         }
     },
 });
