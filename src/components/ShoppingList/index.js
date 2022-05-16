@@ -2,22 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemShoppingList from "../ItemShoppingList";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { useDispatch, useSelector } from "react-redux";
-import { addShoppingList, selectShoppingLists } from "../../slices/shoppingListsSlice";
 
 function ShoppingList() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [shoppingList, setShoppingList] = useState(null);
     const {shoppingListId} = useParams();
-    const shoppingLists = useSelector(selectShoppingLists);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/shopping-lists/${shoppingListId}`)
             .then(res => res.json())
             .then((result) => {
                 setShoppingList(result);
-                dispatch(addShoppingList(result));
             })
             .then(() => setIsLoaded(true));
     }, [shoppingListId]);

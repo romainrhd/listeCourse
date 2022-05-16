@@ -1,23 +1,20 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {getShoppingLists, selectShoppingLists} from "../../slices/shoppingListsSlice";
 
 function ShoppingLists() {
     const [isLoaded, setIsLoaded] = useState(false);
-    const shoppingLists = useSelector(selectShoppingLists);
-    const dispatch = useDispatch();
+    const [shoppingLists, setShoppingLists] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8000/api/shopping-lists/")
             .then(res => res.json())
             .then((result) => {
-                dispatch(getShoppingLists(result));
+                setShoppingLists(result);
             })
             .then(() => {
                 setIsLoaded(true);
             });
-    }, [dispatch]);
+    }, []);
 
     if (!isLoaded) {
         return <p>Chargement ...</p>
@@ -25,7 +22,7 @@ function ShoppingLists() {
 
     return (
         <div className="flex flex-wrap flex-row justify-center divide-y">
-            {shoppingLists.list.map(shoppingList => {
+            {shoppingLists.map(shoppingList => {
                 return (
                     <Link className="w-full text-center p-2 bg-white" key={shoppingList.id} to={"/shopping-list/" + shoppingList.id}>{shoppingList.name}</Link>
                 )
