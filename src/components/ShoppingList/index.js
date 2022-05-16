@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 function ShoppingList() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [shoppingList, setShoppingList] = useState(null);
+    const [newItem, setNewItem] = useState("");
     const {shoppingListId} = useParams();
 
     useEffect(() => {
@@ -17,7 +18,9 @@ function ShoppingList() {
             .then(() => setIsLoaded(true));
     }, [shoppingListId]);
 
-    const handleAddItem = ((event) => {
+    const handleChangeAddItem = ((event) => setNewItem(event.target.value));
+
+    const handleSubmitAddItem = ((event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         fetch(`http://localhost:8000/api/shopping-lists/${shoppingListId}/items`, {
@@ -32,7 +35,7 @@ function ShoppingList() {
                 setShoppingList(result);
             })
             .then(() => {
-                // TODO : clear input
+                setNewItem("");
                 setIsLoaded(true);
             });
     });
@@ -48,8 +51,8 @@ function ShoppingList() {
                     return <ItemShoppingList key={item.id} item={item} />;
                 })}
             </div>
-            <form className="flex" onSubmit={handleAddItem}>
-                <input type="text" name="itemContent" className="w-full border-gray-200" placeholder="Ajouter un article"/>
+            <form className="flex" onSubmit={handleSubmitAddItem}>
+                <input type="text" name="itemContent" value={newItem} onChange={handleChangeAddItem} className="w-full border-gray-200" placeholder="Ajouter un article"/>
                 <button type="submit" className="border px-4 bg-white">
                     <FontAwesomeIcon icon="plus"/>
                 </button>
