@@ -22,7 +22,8 @@ function ItemShoppingList(props) {
             <div className={`w-full pl-2 ${item.done ? "line-through" : ""}`}>
                 {item.content}
             </div>
-            <div className="px-2 rounded-xl bg-red-500 text-white">Viande</div>
+            {/* TODO : A mettre quand les catégories seront implémentées en back */}
+            {/*<div className="px-2 rounded-xl bg-red-500 text-white">Viande</div>*/}
         </div>
     );
 }

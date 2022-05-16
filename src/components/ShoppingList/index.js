@@ -17,6 +17,26 @@ function ShoppingList() {
             .then(() => setIsLoaded(true));
     }, [shoppingListId]);
 
+    const handleAddItem = ((event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        fetch(`http://localhost:8000/api/shopping-lists/${shoppingListId}/items`, {
+            method: "POST",
+            body: JSON.stringify({
+                content: formData.get('itemContent'),
+                done: false
+            })
+        })
+            .then(res => res.json())
+            .then((result) => {
+                setShoppingList(result);
+            })
+            .then(() => {
+                // TODO : clear input
+                setIsLoaded(true);
+            });
+    });
+
     if (!isLoaded) {
         return <p>Chargement ...</p>
     }
@@ -28,7 +48,7 @@ function ShoppingList() {
                     return <ItemShoppingList key={item.id} item={item} />;
                 })}
             </div>
-            <form className="flex">
+            <form className="flex" onSubmit={handleAddItem}>
                 <input type="text" name="itemContent" className="w-full border-gray-200" placeholder="Ajouter un article"/>
                 <button type="submit" className="border px-4 bg-white">
                     <FontAwesomeIcon icon="plus"/>
