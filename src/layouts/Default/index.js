@@ -12,7 +12,7 @@ function LayoutDefault() {
     return (
         <div className="flex flex-col h-screen">
             <Header />
-            <div className="grow bg-gray-100 h-full">
+            <div className="grow bg-gray-100 h-full mt-10 mb-10">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/profil" element={<Profile />} />

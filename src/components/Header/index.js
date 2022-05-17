@@ -9,7 +9,7 @@ function Header() {
     }
 
     return (
-        <div className="flex justify-between w-full border-b p-2">
+        <div className="flex justify-between w-full border-b p-2 fixed bg-white">
             <button onClick={handleClickBackButton}>
                 <FontAwesomeIcon icon="arrow-left"/>
             </button>

@@ -45,13 +45,13 @@ function ShoppingList() {
     }
 
     return (
-        <div className="flex flex-col justify-between h-full">
-            <div className="flex flex-col divide-y bg-white">
+        <div className="flex flex-col justify-between">
+            <div className="flex flex-col divide-y bg-white mb-20">
                 {shoppingList.items.map((item) => {
                     return <ItemShoppingList key={item.id} item={item} />;
                 })}
             </div>
-            <form className="flex" onSubmit={handleSubmitAddItem}>
+            <form className="flex fixed w-full bottom-10" onSubmit={handleSubmitAddItem}>
                 <input type="text" name="itemContent" value={newItem} onChange={handleChangeAddItem} className="w-full border-gray-200" placeholder="Ajouter un article"/>
                 <button type="submit" className="border px-4 bg-white">
                     <FontAwesomeIcon icon="plus"/>
