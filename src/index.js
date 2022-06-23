@@ -8,12 +8,12 @@ import { BrowserRouter } from "react-router-dom";
 // Fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faArrowLeft, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faCheck, faHouse, faPlus} from "@fortawesome/free-solid-svg-icons";
 
 // Style
 import './assets/index.css';
 
-library.add(fab, faArrowLeft, faCheck, faPlus);
+library.add(fab, faArrowLeft, faCheck, faPlus, faHouse);
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
