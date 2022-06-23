@@ -6,7 +6,7 @@ function ShoppingLists() {
     const [shoppingLists, setShoppingLists] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/shopping-lists/")
+        fetch("http://localhost:8000/api/shopping-lists/not-archived")
             .then(res => res.json())
             .then((result) => {
                 setShoppingLists(result);
