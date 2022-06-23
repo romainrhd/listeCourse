@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemShoppingList from "../ItemShoppingList";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import ShoppingListIdHook from "../../hooks/shoppingListIdHook";
 
 function ShoppingList() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [shoppingList, setShoppingList] = useState(null);
     const [newItem, setNewItem] = useState("");
     const {shoppingListId} = useParams();
+    const [setShoppingListIdHook] = ShoppingListIdHook.useShoppingListIdHook();
 
     useEffect(() => {
+        setShoppingListIdHook(1);
         fetch(`http://localhost:8000/api/shopping-lists/${shoppingListId}`)
             .then(res => res.json())
             .then((result) => {

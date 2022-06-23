@@ -10,7 +10,13 @@ function Header() {
     }
 
     const handleClickShoppingListChecked = () => {
-        console.log('shopping list checked');
+        fetch(`http://localhost:8000/api/shopping-lists/1/archive`, {
+            method: "PUT"
+        })
+            .then(res => res.json())
+            .then((result) => {
+                navigate('/');
+            });
     }
 
     const rightButton = () => {
