@@ -9,10 +9,10 @@ function ShoppingList() {
     const [shoppingList, setShoppingList] = useState(null);
     const [newItem, setNewItem] = useState("");
     const {shoppingListId} = useParams();
-    const [setShoppingListIdHook] = ShoppingListIdHook.useShoppingListIdHook();
+    const [,setShoppingListIdHook] = ShoppingListIdHook.useShoppingListIdHook();
 
     useEffect(() => {
-        setShoppingListIdHook(1);
+        setShoppingListIdHook(shoppingListId);
         fetch(`http://localhost:8000/api/shopping-lists/${shoppingListId}`)
             .then(res => res.json())
             .then((result) => {

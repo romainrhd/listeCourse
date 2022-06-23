@@ -1,16 +1,18 @@
 import {Link, useNavigate, useMatch} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import ShoppingListIdHook from "../../hooks/shoppingListIdHook";
 
 function Header() {
     const navigate = useNavigate();
     const matchShoppingList = useMatch('/shopping-list/:shoppingListId');
+    const [shoppingListIdHook,] = ShoppingListIdHook.useShoppingListIdHook();
 
     const handleClickBackButton = () => {
         navigate(-1);
     }
 
     const handleClickShoppingListChecked = () => {
-        fetch(`http://localhost:8000/api/shopping-lists/1/archive`, {
+        fetch(`http://localhost:8000/api/shopping-lists/${shoppingListIdHook}/archive`, {
             method: "PUT"
         })
             .then(res => res.json())
