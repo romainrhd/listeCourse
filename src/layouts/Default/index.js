@@ -7,6 +7,7 @@ import Profile from "../../pages/Profile";
 import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
 import List from "../../pages/List";
+import Login from "../../pages/Login";
 
 function LayoutDefault() {
     return (
@@ -17,6 +18,7 @@ function LayoutDefault() {
                     <Route path="/" element={<Home />} />
                     <Route path="/profil" element={<Profile />} />
                     <Route path="/shopping-list/:shoppingListId" element={<List />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
             <Navbar />
